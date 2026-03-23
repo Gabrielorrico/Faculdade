@@ -20,27 +20,21 @@ int main() {
 }
 
 int compara_sufixo(char *str, char *sufixo){
-    char *f1 = str;
-    char *f2 = sufixo;
+    char *inicio_ponto;
 
-    while (*f1 != '\0'){
-        f1++;
+    while((*str != '\0')) {
+        if(*str == '.') {
+            inicio_ponto = str;
+        }
+        str++;
     }
 
-    while (*f2 != '\0'){
-        f2++;
-    }
-
-    f1--;
-    f2--;
-
-    while (f2 >= sufixo){
-        if(f1 < str || *f1 != *f2){
-            return 0;
-
-        } 
-        f1--;
-        f2--;   
+    while((*sufixo != '\0') && (inicio_ponto != '\0')) {
+        if(*sufixo != *inicio_ponto) {
+                return 0;
+            }
+        sufixo++;
+        inicio_ponto++; 
     }
     return 1;
 }
