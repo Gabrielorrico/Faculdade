@@ -19,16 +19,33 @@ int eh_palindromo_estrito(char *str){
     while (*fin != '\0'){
         fin++;
     }
+
+    fin--;
     
-    while (*inicio != '\0'){
+    while (inicio < fin){
+
+        
         if(*inicio >= 'A' && *inicio <= 'Z'){
-            *inicio = *inicio - 32;
-            if(*inicio >= 'a' && *inicio <= 'z'){
-                if(*inicio != *fin){
-                    return 0;
-                }
-            }
+            *inicio = *inicio + 32;
         }
+        if(*fin >= 'A' && *fin <= 'Z'){
+            *fin = *fin + 32; 
+        }
+
+        if(!(*inicio >= 'a' && *inicio <= 'z')){
+        inicio++;
+        continue;
+        }
+
+        if(!(*fin >= 'a' && *fin <= 'z')){
+        fin--;
+        continue;
+        }
+
+        if(*inicio != *fin){
+            return 0;
+        }
+
         inicio++;
         fin--;
     }

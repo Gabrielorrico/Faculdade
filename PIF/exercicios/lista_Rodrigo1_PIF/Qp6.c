@@ -20,21 +20,28 @@ int main() {
 }
 
 int compara_sufixo(char *str, char *sufixo){
-    char *inicio_ponto;
+    char *fim_str = str;
+    char *fim_suf = sufixo;
 
-    while((*str != '\0')) {
-        if(*str == '.') {
-            inicio_ponto = str;
-        }
-        str++;
+    while((*fim_str != '\0')) {
+        fim_str++;
     }
 
-    while((*sufixo != '\0') && (inicio_ponto != '\0')) {
-        if(*sufixo != *inicio_ponto) {
-                return 0;
-            }
-        sufixo++;
-        inicio_ponto++; 
+    while((*fim_suf != '\0')) {
+        fim_suf++;
+    }
+
+    fim_suf--;
+    fim_str--; 
+    //luiz.pdf
+    //    .pdf
+
+    while((fim_suf >= sufixo)) {
+        if(*fim_suf != *fim_str) {
+            return 0;
+        }
+        fim_suf--;
+        fim_str--; 
     }
     return 1;
 }

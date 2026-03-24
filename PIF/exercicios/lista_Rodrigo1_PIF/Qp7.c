@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int contemSubstring(char *str, char *sub);
 
@@ -17,7 +18,27 @@ int main() {
 }
 
 int contemSubstring(char *str, char *sub){
-    int cont_true;
+
+    int tamanho_sub = sizeof(sub);
+
+    while (*str != '\0'){
+
+        int i;
+        for(i=0;i<tamanho_sub;i++){
+            if(*(str + i) == '\0' || *(str + i) != *(sub + i)){
+                break;
+            }
+        }
+        if(tamanho_sub == i){
+            return 1;
+        }
+        str++;
+    }
+    return 0;
+    
+    
+    
+    /*int cont_true;
 
     int tamanho_str = 0;
     int tamanho_sub = 0;
@@ -37,5 +58,5 @@ int contemSubstring(char *str, char *sub){
             return 1;
         }
     }
-    return 0;
+    return 0;*/
 }
