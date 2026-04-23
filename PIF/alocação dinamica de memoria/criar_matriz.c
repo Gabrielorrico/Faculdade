@@ -50,7 +50,6 @@ int** criar_matriz(int n, int m){
 
     for(int i=0; i < n; i++){
         matriz[i] = (int *)malloc(m*sizeof(int));
-
     }
 
     return matriz;
